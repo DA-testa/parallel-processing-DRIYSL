@@ -1,37 +1,26 @@
 # python3
 # Daniels Raivo Ivanovs 211RMB021 15.grupa
+import heapq
+
 def parallel_processing(n, m, data):
     output = []
     thread = [(0,i) for i in range(n)]
-    thread.sort()
+    heapq.heapify(thread)
     
     
     for i in range (m):
-        time, index = thread[0]
-        output.append((index, time))
-        thread[0] = (time + data[i], index)
-        thread.sort()
-
+        time, thread = heapq.heappop(thread)
+        output.append((thread, time))
+        heapq.heappush = (thread, (time + data[i], thread))
     return output
 
 def main():
     n,m = map(int, input().split())
+    assert 1 <= n <= 10**5,
+    assert 1 <= m <= 10**5,
+    data = list(map(int,input().spli()))
     
-    if not 1 <= n <= 10**5:
-        pass
-    elif not 1 <=m <= 10**5:
-        pass
-    else:
-        data = list(map(int,input().split()))
-        if len(data) != m:
-            pass
-        elif not all (0 <= ti<=10**9 for ti in data):
-            pass
-        else:
-            result = paralle_processing(n, m, data)
-            
-            for index, start_time in result:
-                print(index, start_time)
+
             
 
 
