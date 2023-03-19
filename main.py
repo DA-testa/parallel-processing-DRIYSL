@@ -4,14 +4,14 @@ import heapq
 
 def parallel_processing(n, m, data):
     output = []
-    thread = [(0,i) for i in range(n)]
-    heapq.heapify(thread)
+    threads = [(0,i) for i in range(n)]
+    heapq.heapify(threads)
     
     
     for i in range (m):
-        time, thread = heapq.heappop(thread)
-        output.append((thread, time))
-        heapq.heappush = (thread, (time + data[i], thread))
+        t, thread = heapq.heappop(threads)
+        output.append((thread, t))
+        heapq.heappush = (threads, (t + data[i], thread))
     return output
 
 def main():
@@ -24,8 +24,8 @@ def main():
     
     result = parallel_processing(n, m, data)
     
-    for thread, time in result:
-        print(thread, time)
+    for thread, t in result:
+        print(thread, t)
     
 
             
