@@ -4,12 +4,11 @@ def parallel_processing(n, m, data):
     output = []
     thread = [(0,i) for i in range(n)]
     thread.sort()
-    # TODO: write the function for simulating parallel tasks, 
-    # create the output pairs
+    
     
     for i in range (m):
-        index, time = thread[0]
-        output.append((index,time))
+        time, index = thread[0]
+        output.append((index, time))
         thread[0] = (time + data[i], index)
         thread.sort()
 
@@ -23,9 +22,8 @@ def main():
     elif not 1 <=m <= 10**5:
         pass
     else:
-        
         data = list(map(int,input().split()))
-        if len(data) !=m:
+        if len(data) != m:
             pass
         elif not all (0 <= ti<=10**9 for ti in data):
             pass
