@@ -9,9 +9,9 @@ def parallel_processing(n, m, data):
     
     
     for i in range (m):
-        t, thread = heapq.heappop(threads)
-        output.append((thread, t))
-        heapq.heappush = (threads, (t + data[i], thread))
+        time, inp = heapq.heappop(threads)
+        output.append((inp, time))
+        heapq.heappush = (threads, (time + data[i], inp))
     return output
 
 def main():
@@ -21,12 +21,12 @@ def main():
     assert 1 <= n <= 10**5
     assert 1 <= m <= 10**5
     assert len(data) == m
-    assert all(0 <= time <= 10**9 for time in data)
+    assert all(0 <= ti <= 10**9 for ti in data)
     
     result = parallel_processing(n, m, data)
     
-    for thread, starting_time in result:
-        print(thread, starting_time)
+    for inp, starting_time in result:
+        print(inp, starting_time)
            
 if __name__ == "__main__":
     main()
