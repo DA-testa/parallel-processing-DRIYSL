@@ -1,29 +1,42 @@
 # python3
-
+# Daniels Raivo Ivanovs 211RMB021 15.grupa
 def parallel_processing(n, m, data):
     output = []
+    thread = [(0,i) for i in range(n)]
+    thread.sort()
     # TODO: write the function for simulating parallel tasks, 
     # create the output pairs
+    
+    for i in range (m):
+        index, time = thread[0]
+        output.append((index,time))
+        thread[0] = (time + data[i], index)
+        thread.sort()
 
     return output
 
 def main():
-    # TODO: create input from keyboard
-    # input consists of two lines
-    # first line - n and m
-    # n - thread count 
-    # m - job count
-    n = 0
-    m = 0
-
-    # second line - data 
-    # data - contains m integers t(i) - the times in seconds it takes any thread to process i-th job
-    data = []
-
-    # TODO: create the function
-    result = parallel_processing(n,m,data)
+    n,m = map(int, input().split())
     
-    # TODO: print out the results, each pair in it's own line
+    if not 1 <= n <= 10**5:
+        pass
+    elif not 1 <=m <= 10**5:
+        pass
+    else:
+        
+        data = list(map(int,input().split()))
+        if len(data) !=m:
+            pass
+        elif not all (0 <= ti<=10**9 for ti in data):
+            pass
+        else:
+            result = paralle_processing(n, m, data)
+            
+            for index, start_time in result:
+                print(index, start_time)
+            
+    
+   
 
 
 
