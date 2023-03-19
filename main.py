@@ -9,25 +9,25 @@ def parallel_processing(n, m, data):
     
     
     for i in range (m):
-        time, inp = heapq.heappop(threads)
-        output.append((inp, time))
-        heapq.heappush(threads, (time + data[i], inp))
+        time, thread = heapq.heappop(threads)
+        output.append((thread, time))
+        heapq.heappush(threads, (time + data[i], thread))
+        
     return output
 
 def main():
-    
-    n, m = map(int, input().split())
-    data = list (map(int, input().split()))
-
+  
+    n,m = map(int, input().split())
     assert 1 <= n <= 10**5
     assert 1 <= m <= 10**5
+    data = list(map(int,input().split()))
     assert len(data) == m
-    assert all(0 <= ti <= 10**9 for ti in data)
-    
+    assert all(0 <= t <= 10**9 for t in data)
+
     result = parallel_processing(n, m, data)
-    
-    for inp, starting_time in result:
-        print(inp, starting_time)
-           
+
+    for thread, t in result:
+        print(thread, t)
+
 if __name__ == "__main__":
     main()
