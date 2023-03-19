@@ -35,9 +35,6 @@ def main():
             for index, start_time in result:
                 print(index, start_time)
             
-    
-   
-
 
 
 if __name__ == "__main__":
