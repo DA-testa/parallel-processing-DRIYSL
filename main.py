@@ -11,12 +11,13 @@ def parallel_processing(n, m, data):
     for i in range (m):
         time, inp = heapq.heappop(threads)
         output.append((inp, time))
-        heapq.heappush = (threads, (time + data[i], inp))
+        heapq.heappush(threads, (time + data[i], inp))
     return output
 
 def main():
-    n,m = map(int, input().split())
-    data = list(map(int,input().split()))
+    
+    n, m = map(int, input().split())
+    data = list (map(int, input().split()))
 
     assert 1 <= n <= 10**5
     assert 1 <= m <= 10**5
